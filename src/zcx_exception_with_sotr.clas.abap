@@ -1,0 +1,35 @@
+class ZCX_EXCEPTION_WITH_SOTR definition
+  public
+  inheriting from CX_STATIC_CHECK
+  create private .
+
+public section.
+
+  constants ZCX_EXCEPTION_WITH_SOTR type SOTR_CONC value '000C29169C321EDAB3B0F39EBB8BD622' ##NO_TEXT.
+  constants ERROR_WITH_SHORT_TEXT type SOTR_CONC value '000C29169C321EDAB3B0F39EBB8BF622' ##NO_TEXT.
+  constants ERROR_WITH_LONG_TEXT type SOTR_CONC value '000C29169C321EDAB3B0F39EBB8C1622' ##NO_TEXT.
+
+  methods CONSTRUCTOR
+    importing
+      !TEXTID like TEXTID optional
+      !PREVIOUS like PREVIOUS optional .
+protected section.
+private section.
+ENDCLASS.
+
+
+
+CLASS ZCX_EXCEPTION_WITH_SOTR IMPLEMENTATION.
+
+
+  method CONSTRUCTOR.
+CALL METHOD SUPER->CONSTRUCTOR
+EXPORTING
+TEXTID = TEXTID
+PREVIOUS = PREVIOUS
+.
+ IF textid IS INITIAL.
+   me->textid = ZCX_EXCEPTION_WITH_SOTR .
+ ENDIF.
+  endmethod.
+ENDCLASS.
